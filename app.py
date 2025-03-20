@@ -23,7 +23,7 @@ def home():
     
     return jsonify({"message": "products"})
 
-@app.route("/products", methods=["GET"])
+@app.route("/Users", methods=["GET"])
 def get_products():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
