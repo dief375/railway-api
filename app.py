@@ -67,6 +67,38 @@ def add_user():
 
     except mysql.connector.Error as err:
         return jsonify({"error": f"MySQL Error: {err}"}), 500
+@app.route("/Users/<int:user_id>", methods=["PUT"])
+def update_user(user_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # Get the JSON data from the request
+        data = request.get_json()
+        new_name = data.get("User_Name")
+        new_address = data.get("User_Address")
+
+        # Ensure required fields are present
+        if not new_name or not new_address:
+            return jsonify({"error": "User_Name and User_Address are required"}), 400
+
+        # Execute update query
+        cursor.execute(
+            "UPDATE Users SET User_Name = %s, User_Address = %s WHERE id = %s",
+            (new_name, new_address, user_id),
+        )
+        conn.commit()
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({"message": "User updated successfully"}), 200
+
+    except mysql.connector.Error as err:
+        return jsonify({"error": f"MySQL Error: {err}"}), 500
+
+    except Exception as e:
+        return jsonify({"error": f"Unexpected Error: {str(e)}"}), 500
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))  # Use Railway's assigned port
     app.run(host="0.0.0.0", port=port, debug=True)
