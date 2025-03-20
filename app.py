@@ -31,6 +31,8 @@ def get_products():
 
         cursor.execute("SELECT * FROM Users")
         products = cursor.fetchall()
+        print("sUscess")
+       
 
         cursor.close()
         conn.close()
