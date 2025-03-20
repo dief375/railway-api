@@ -27,8 +27,10 @@ def get_products():
     try:
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT id, User_Name, User_Address FROM Users")
 
-        cursor.execute("SELECT * FROM Users")
+
+        
         products = cursor.fetchall()
         print("Success")  
 
