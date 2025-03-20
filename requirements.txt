@@ -3,3 +3,5 @@ pymysql
 mysql-connector-python
 python-dotenv
 gunicorn
+loguru
+python-json-logger
