@@ -20,7 +20,7 @@ def get_db_connection():
 
 @app.route("/")
 def home():
-    products = get_products()
+    
     return jsonify({"message": "products"})
 
 @app.route("/products", methods=["GET"])
