@@ -25,7 +25,7 @@ def home():
 
 @app.route("/Users", methods=["GET"])
 def get_products():
-   try:
+   
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
         
@@ -39,9 +39,7 @@ def get_products():
         
         return jsonify(users)
 
-    except mysql.connector.Error as err:
-        print("Database error:", err)
-        return jsonify({"error": str(err)}), 500
+    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
