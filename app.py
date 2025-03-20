@@ -1,7 +1,9 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import mysql.connector
 import os
 from dotenv import load_dotenv
+
+
 
 # Load environment variables
 load_dotenv()
