@@ -2,4 +2,4 @@ flask
 pymysql
 mysql-connector-python
 python-dotenv
-
+gunicorn
