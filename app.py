@@ -1,10 +1,10 @@
 from flask import Flask, jsonify
 import mysql.connector
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()
+#load_dotenv()
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ def get_products():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     
-    cursor.execute("SELECT * FROM products")
+    cursor.execute("SELECT * FROM Users")
     products = cursor.fetchall()
     
     cursor.close()
