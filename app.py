@@ -45,7 +45,7 @@ def get_products():
 def add_user():
     try:
         data = request.get_json()
-        user_id = data.get("User_id")
+        user_id = data.get("id")
         user_name = data.get("User_Name")
         user_address = data.get("User_Address")
         user_password = data.get("User_Password")
@@ -56,7 +56,7 @@ def add_user():
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute(
-            "INSERT INTO Users (User_id, User_Name, User_Address, User_Password) VALUES (%s, %s, %s, %s)",
+            "INSERT INTO Users (id, User_Name, User_Address, User_Password) VALUES (%s, %s, %s, %s)",
             (user_id, user_name, user_address, user_password),
         )
         conn.commit()
